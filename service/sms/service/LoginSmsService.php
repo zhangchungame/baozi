@@ -15,6 +15,12 @@ use app\service\sms\SmsCodeNotCorrectException;
 
 class LoginSmsService
 {
+    /**
+     * 设置验证码
+     * @param $input
+     * @return string
+     * @throws \Exception
+     */
     public function catchSms($input){
         if(!StringCheck::checkMobile($input['mobile'])){
             throw new \Exception("手机不正确");

@@ -36,6 +36,13 @@ class MemberLogin
         $smsService=new LoginSmsService();
         $smsService->catchSms($input);
     }
+
+    /**
+     * 手机验证码登录,未注册自动注册
+     * @param $input
+     * @return array|null|\yii\db\ActiveRecord
+     * @throws \Exception
+     */
     public function loginSms($input){
         $memberService=new MemberLoginService();
         $smsService=new LoginSmsService();

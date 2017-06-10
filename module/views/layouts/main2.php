@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
 Version: 4.7.5
 Author: KeenThemes
@@ -22,10 +21,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8" />
-    <title>Metronic Admin Theme #1 | Blank Page Layout</title>
+    <title>Metronic Admin Theme #1 | Admin Dashboard</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Preview page of Metronic Admin Theme #1 for blank page layout" name="description" />
+    <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
@@ -34,6 +33,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="/metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="/metronic/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/metronic/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/metronic/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="/metronic/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/metronic/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
     <link href="/metronic/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
@@ -45,12 +50,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" /> </head>
 <!-- END HEAD -->
-
-<!--[if lt IE 9]>
-<script src="/metronic/assets/global/plugins/respond.min.js"></script>
-<script src="/metronic/assets/global/plugins/excanvas.min.js"></script>
-<script src="/metronic/assets/global/plugins/ie8.fix.min.js"></script>
-<![endif]-->
 <!-- BEGIN CORE PLUGINS -->
 <script src="/metronic/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -59,8 +58,20 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/metronic/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-
-
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="/metronic/assets/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
+        type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+        type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"
+        type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"
+        type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/plupload/js/plupload.full.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="/metronic/assets/global/scripts/app.min.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
@@ -143,6 +154,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </li>
                     <!-- END SIDEBAR TOGGLER BUTTON -->
                     <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+
                     <li class="nav-item  <?php if(\Yii::$app->controller->id=='default')echo 'start active open'; ?> ">
                         <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-diamond"></i>
@@ -181,55 +193,6 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li class="nav-item  ">
                                 <a href="?r=manage/activity/list" class="nav-link ">
                                     <span class="title">活动列表</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-search-wrapper">
-                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                        <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                        <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-                        <form class="sidebar-search  sidebar-search-bordered" action="page_general_search_3.html" method="POST">
-                            <a href="javascript:;" class="remove">
-                                <i class="icon-close"></i>
-                            </a>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </span>
-                            </div>
-                        </form>
-                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
-                    </li>
-                    <li class="nav-item start ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="icon-home"></i>
-                            <span class="title">Dashboard</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item start ">
-                                <a href="index.html" class="nav-link ">
-                                    <i class="icon-bar-chart"></i>
-                                    <span class="title">Dashboard 1</span>
-                                </a>
-                            </li>
-                            <li class="nav-item start ">
-                                <a href="dashboard_2.html" class="nav-link ">
-                                    <i class="icon-bulb"></i>
-                                    <span class="title">Dashboard 2</span>
-                                    <span class="badge badge-success">1</span>
-                                </a>
-                            </li>
-                            <li class="nav-item start ">
-                                <a href="dashboard_3.html" class="nav-link ">
-                                    <i class="icon-graph"></i>
-                                    <span class="title">Dashboard 3</span>
-                                    <span class="badge badge-danger">5</span>
                                 </a>
                             </li>
                         </ul>
@@ -804,18 +767,16 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="heading">
                         <h3 class="uppercase">Layouts</h3>
                     </li>
-                    <li class="nav-item  active open">
+                    <li class="nav-item  ">
                         <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-layers"></i>
                             <span class="title">Page Layouts</span>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
+                            <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="nav-item  active open">
+                            <li class="nav-item  ">
                                 <a href="layout_blank_page.html" class="nav-link ">
                                     <span class="title">Blank Page</span>
-                                    <span class="selected"></span>
                                 </a>
                             </li>
                             <li class="nav-item  ">
@@ -1931,6 +1892,12 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     <!-- END FOOTER -->
 </div>
+<!--[if lt IE 9]>
+<script src="/metronic/assets/global/plugins/respond.min.js"></script>
+<script src="/metronic/assets/global/plugins/excanvas.min.js"></script>
+<script src="/metronic/assets/global/plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
 <script>
     $(document).ready(function()
     {
@@ -1941,6 +1908,5 @@ License: You must have a valid license purchased only from themeforest(the above
     })
 </script>
 </body>
-
 
 </html>

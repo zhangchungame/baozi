@@ -26,7 +26,7 @@ class RespCommon
     public static function failReturn(\Exception $exception){
         \Yii::$app->response->format=Response::FORMAT_JSON;
         $res=[
-            'code'=>'200',
+            'code'=>'',
             'data'=>'',
             'msg'=>$exception->getMessage()
         ];

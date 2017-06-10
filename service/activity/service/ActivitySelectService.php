@@ -21,11 +21,14 @@ class ActivitySelectService
     public function selectOne($input)
     {
         if (empty($input['id'])) {
-            throw new \Exception("商品ID为空");
+            $input['id']=0;
         }
         $product = ActivityMod::find()->where(['id' => $input['id']])->one();
-        $res = $product->toArray();
-        $res['image'] = json_decode($res['image'], 1);
+        if($product){
+            $res = $product->toArray();
+        }else{
+            $res=[];
+        }
         return $res;
     }
 
@@ -49,6 +52,9 @@ class ActivitySelectService
         }
         if ($input['id']) {
             $activitys=$activitys->andWhere(['id' => $input['id']]);
+        }
+        if($input['status']=='active'){
+            $activitys=$activitys->andWhere(['>', 'end_date', time()]);
         }
         $activitys = $activitys->limit($input['length'])->offset($input['start']);
         $activitys = $activitys->orderBy($input['orderby'] . ' ' . $input['ordersort']);

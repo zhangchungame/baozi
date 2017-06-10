@@ -5,10 +5,36 @@
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <link href="/metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="/metronic/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <style>
+        .footnav {
+            position: fixed;
+            background-color: #9d9d9d;
+            width: 100%;
+            height: 80px;
+            bottom: 0;
+            left: 0;
+            z-index: 99;
+        }
 
+        .footnav ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footnav ul li {
+            display: block;
+            float: left;
+            width: 33%;
+            align: center;
+        }
+
+        .footnav ul img {
+            display: block;
+            width: 30%;
+            margin: auto 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,19 +85,19 @@
 </div>
 <script>
     var loginObj = {
-        show: function () {
+        show:function () {
             $(".login-container").show();
         },
-        hide: function () {
+        hide:function () {
             $(".login-container").hide();
         },
-        onlogin: function (data) {
-            this.hide();
+        onlogin : function (data) {
+
         },
-        login: function () {
-            var thisobj = this;
+        login : function () {
+            var thisobj=this;
             var mobile = $("#mobile").val();
-            var smscode = $("#smscode").val();
+            var smscode=$("#smscode").val();
             if (mobile.length == 0) {
                 alert('请输入手机号码！');
                 return false;
@@ -90,21 +116,16 @@
                 alert('请输入验证码！');
                 return false;
             }
-            if (smscode.length != 4) {
-                alert('请输入4位验证码！');
-                return false;
-            }
             $.post("/?r=member/login",
                 {
                     mobile: mobile,
-                    smsCode: smscode
+                    smsCode:smscode
                 },
                 function (data, status) {
                     if (data.code == 200) {
                         thisobj.onlogin(data.data);
-                    } else {
+                    }else{
                         alert(data.msg);
-                        $("#smscode").val('');
                     }
                 });
         }
@@ -152,13 +173,37 @@
     }
     loginObj.hide();
     <?php
-    if ($needlogin == 'y') {
+    if($needlogin=='y'){
         echo "loginObj.show();";
     }
 
     ?>
 </script>
-<?= $content ?>
+<div style="margin-bottom: 80px;">
+    <?= $content ?>
+</div>
+<nav class="footnav">
+    <ul>
+        <li>
+            <a>
+                <img src="/image/timg.jpg">
+                <div>首页</div>
+            </a>
+        </li>
+        <li>
+            <a>
+                <img src="/image/timg.jpg">
+                <div>活动</div>
+            </a>
+        </li>
+        <li>
+            <a>
+                <img src="/image/timg.jpg">
+                <div>账户</div>
+            </a>
+        </li>
+    </ul>
+</nav>
 　　　　
 
 </body>

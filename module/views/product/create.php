@@ -1,3 +1,10 @@
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<link href="/metronic/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="/metronic/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/metronic/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+<link href="/metronic/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+<link href="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL PLUGINS -->
 <div class="row">
     <div class="col-md-12">
         <form class="form-horizontal form-row-seperated" id="form1" action="/?r=manage/product/createdo" method="post">
@@ -98,6 +105,18 @@
         </form>
     </div>
 </div>
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="/metronic/assets/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/metronic/assets/global/plugins/plupload/js/plupload.full.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL SCRIPTS -->
 <script src="/metronic/assets/pages/scripts/ecommerce-products-edit.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 <script>

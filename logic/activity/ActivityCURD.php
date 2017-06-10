@@ -12,6 +12,7 @@ namespace app\logic\activity;
 use app\service\activity\service\ActivitySelectService;
 use app\service\activity\service\ActivityUpdateService;
 use app\service\activity\service\QrActivityService;
+use dosamigos\qrcode\lib\Enum;
 use dosamigos\qrcode\QrCode;
 
 class ActivityCURD
@@ -28,13 +29,14 @@ class ActivityCURD
             $qr=$qractivityService->selectOne($condition);
             if(!$qr){
                 $qrfile_name=time().rand(100,999).'.png';
-                QrCode::png("http://www.baidu.com",'@qrFilePath/'.$qrfile_name,Enum::QR_ECLEVEL_H,24,2,false);
+                QrCode::png(\Yii::$app->params['host']."/?r=activity/sign&activity_id=".$active['id'],\Yii::getAlias('@qrFilePath').'/'.$qrfile_name,Enum::QR_ECLEVEL_H,18,2,false);
                 $input=[
                     'activity_id'=>$active['id'],
                     'qr_file_name'=>$qrfile_name,
                     ];
                 $qr=$qractivityService->save($input);
             }
+            return $active;
         }catch (\Exception $e){
             throw $e;
         }
@@ -46,11 +48,6 @@ class ActivityCURD
      * @throws \Exception
      */
     public function activitySelect($input){
-        if(empty($input['id'])){
-            return [
-                'image'=>[]
-            ];
-        }
         try{
             $service=new ActivitySelectService();
             $res= $service->selectOne($input);

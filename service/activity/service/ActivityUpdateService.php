@@ -15,11 +15,16 @@ class ActivityUpdateService
 {
     public function update($input)
     {
-        if (empty($input['name']) || empty($input['image'])||empty($input['main_image']) || empty($input['begin_date']) || empty($input['end_date'])) {
+         if (empty($input['name']) ||
+            empty($input['map_image']) ||
+            empty($input['begin_date']) ||
+            empty($input['end_date'])||
+            empty($input['place'])||
+            empty($input['withdraw'])||
+            empty($input['title_image'])||
+            empty($input['description'])
+        ) {
             throw new \Exception("缺少参数");
-        }
-        if(is_array($input['image'])){
-            $input['image']=json_encode($input['image']);
         }
         if(empty($input['id'])){
             $input['id']=0;
@@ -29,10 +34,13 @@ class ActivityUpdateService
             $activity=new ActivityMod();
         }
         $activity->name=$input['name'];
-        $activity->image=$input['image'];
-        $activity->main_image=$input['main_image'];
+        $activity->map_image=$input['map_image'];
         $activity->begin_date=strtotime($input['begin_date']);
         $activity->end_date=strtotime($input['end_date']);
+        $activity->place=$input['place'];
+        $activity->withdraw=$input['withdraw'];
+        $activity->title_image=$input['title_image'];
+        $activity->description=$input['description'];
         if($activity->isNewRecord){
             $activity->create_date=time();
         }

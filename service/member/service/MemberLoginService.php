@@ -72,4 +72,22 @@ class MemberLoginService
         \Yii::$app->session->set('login_name',$member['login_name']);
         \Yii::$app->session->set('mobile',$member['mobile']);
     }
+
+    public function getMemberSession(){
+        $member['member_id']=\Yii::$app->session->get('member_id');
+        if(!$member['member_id']){
+            return [];
+        }
+        $member['login_name']=\Yii::$app->session->get('login_name');
+        $member['mobile']=\Yii::$app->session->get('mobile');
+        return $member;
+    }
+
+    public function checkIsLogin(){
+        if(\Yii::$app->session->get('member_id')){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
